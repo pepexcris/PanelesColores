@@ -5,6 +5,7 @@
  */
 package panelescolores;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
@@ -32,25 +33,30 @@ public class Vista extends Frame {
         this.controlador = controlador;
         this.setBounds(500, 400, 250, 350);
         this.setLayout(new GridLayout(3, 0));
-        Panel panelCabecera=new Panel();
-        Panel panelArriba = new Panel();
+        Panel panelCabecera = new Panel();
+        Panel panelCentral = new Panel();
+        panelCentral.setLayout(new BorderLayout(30,30));
+        Panel panelCentralIzda = new Panel();  //
+        Panel panelCentralDcha = new Panel();   //
+
         Panel panelAbajo = new Panel();
+        panelAbajo.setLayout(new GridLayout(0, 5));
         this.add(panelCabecera);
-        this.add(panelArriba);
+        this.add(panelCentral);
         this.add(panelAbajo);
-        
-        lblCabecera=new Label("TRINITARIAS");
-        lblCabecera.setFont(new Font("Arial", Font.PLAIN,  20));
+
+        lblCabecera = new Label("TRINITARIAS");
+        lblCabecera.setFont(new Font("Arial", Font.PLAIN, 20));
         panelCabecera.add(lblCabecera);
-        
 
         panelGrande = new Panel();
         panelGrande.setName("GRANDE");
-        panelGrande.setSize(new Dimension(50,50));  // Dimensión
+        panelGrande.setSize(new Dimension(50, 50));  // Dimensión
         panelGrande.setBackground(Color.yellow);
         panelGrande.addMouseListener(controlador);
-        panelArriba.add(panelGrande);
-        
+        panelCentral.add(BorderLayout.WEST, panelCentralIzda);
+        panelCentral.add(BorderLayout.CENTER, panelGrande);
+        panelCentral.add(BorderLayout.EAST, panelCentralDcha);
 
         panelYellow = new Panel();
         panelYellow.setBackground(Color.yellow);
@@ -84,12 +90,12 @@ public class Vista extends Frame {
         panelGrande.setBackground(color);
 
     }
-    public void setColorCabecera(Color color){
-        
+
+    public void setColorCabecera(Color color) {
+
         this.lblCabecera.setForeground(color);
     }
 
-    
     private static class Dimension extends java.awt.Dimension {   // CLASE Dimension
 
         public Dimension(int i, int i0) {

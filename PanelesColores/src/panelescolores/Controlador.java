@@ -47,7 +47,6 @@ public class Controlador implements MouseListener {
         if (panel.getName().equals("GRANDE")) {
             vista.setColorGrande(color);
         }
-
     }
 
     @Override
